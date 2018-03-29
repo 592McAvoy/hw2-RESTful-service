@@ -17,12 +17,14 @@ public class WordLadder {
         this.record = new HashSet<>();//��¼�滻����µ��ʣ������������ѭ��
         this.result = new Stack<>();    //WordLadder�Ľ��
         this.ladder = new LinkedList<>();//���ڴ洢ladder�Ķ��
+        this.word1 = "";
+        this.word2 = "";
     }
 
-    public void setWord(String w1, String w2){
+    public String setWord(String w1, String w2){
         word1 = w1;
         word2 = w2;
-        return;
+        return w1+w2;
     }
 
     public String getLadder(){
@@ -90,7 +92,7 @@ public class WordLadder {
                 }
             }
         }
-        System.out.println("false!");
+        //System.out.println("false!");
         return false;
     }
 
