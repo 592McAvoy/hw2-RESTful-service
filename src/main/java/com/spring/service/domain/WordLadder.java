@@ -28,7 +28,7 @@ public class WordLadder {
     public String getLadder(){
         String ss;
         if(result.empty()){
-            ss = "No ladder found from " + word2 + " back to " + word1 + ":\n";
+            ss = "No ladder found from " + word2 + " back to " + word1 + "\n";
             return ss;
         }
         ss = "A ladder from " + word2 + " back to " + word1 + ":\n";
@@ -40,52 +40,22 @@ public class WordLadder {
         return ss;
     }
 
-    public void run() {
-        setDict("dictionary.txt");
+    public String run() {
+        if(!setDict("D:\\罗宇辰\\作业\\大二下\\软工后端\\hw2\\src\\main\\java\\com\\spring\\service\\text\\dictionary.txt")){
+            return "open file error\n";
+        };
 
         Stack<String> ss = new Stack<>();
         ss.push(word1);
         ladder.offer(ss);
         record.add(word1);
 
-        findLadder(word2);
+        if(!findLadder(word2)){
+            return "no ladder\n";
+        };
         ladder = new LinkedList<>();
         record = new HashSet<>();
-
-        //���û����õ������յ�ĵ���
-        /*while (true) {
-
-            System.out.println("Word #1 (or Enter to quit): ");
-            word1 = in.nextLine().toLowerCase();
-            if (word1.equals("")) break;
-
-            System.out.println("Word #2 (or Enter to quit): ");
-            word2 = in.nextLine().toLowerCase();
-            //�Ų鲻�淶����
-            if (word2.equals("")) break;
-            if (word1.equals(word2)) {
-                System.out.println("The two words must be different.");
-                continue;
-            }
-            //��ʼ��ladder����
-            Stack<String> ss = new Stack<>();
-            ss.push(word1);
-            ladder.offer(ss);
-            record.add(word1);
-
-            //������ҽ��
-            boolean find = findLadder(word2);
-            ladder = new LinkedList<>();
-            record = new HashSet<>();
-            if (find) {
-                System.out.println("A ladder from " + word2 + " back to " + word1 + " :");
-                while (!result.empty())
-                    System.out.print(result.pop() + " ");
-                System.out.println("\n");
-            } else
-                System.out.println("No word ladder found from " + word2 + " back to " + word1 + " .\n");
-        }
-        System.out.println("Have a nice day!");*/
+        return "ok";
     }
 
     private static boolean findLadder(String word2) {
@@ -149,7 +119,7 @@ public class WordLadder {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
-            String tempString = null;
+            String tempString;
             // һ�ζ���һ�У�ֱ������nullΪ�ļ�����
             while ((tempString = reader.readLine()) != null) {
                 dict.add(tempString);
