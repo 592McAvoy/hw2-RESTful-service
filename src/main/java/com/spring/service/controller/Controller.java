@@ -8,9 +8,9 @@ import com.spring.service.domain.WordLadder;
 @RestController
 public class Controller {
 
-    @RequestMapping
+    @RequestMapping(value="/")
     public String index(){
-        return "Hello World!";
+        return "hello";
     }
 
     @RequestMapping(value="/run")
